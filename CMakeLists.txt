@@ -9,6 +9,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+# Sanitizers
+if(USE_SANITIZERS)
+    if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+        add_compile_options(-fsanitize=address,undefined -fno-omit-frame-pointer)
+        add_link_options(-fsanitize=address,undefined)
+        message(STATUS "Sanitizers enabled: Address, Undefined")
+    else()
+        message(WARNING "Sanitizers only supported for Clang and GCC")
+    endif()
+endif()
+
 # Build options
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 option(BUILD_TESTS "Build unit tests" ON)
@@ -16,6 +27,7 @@ option(BUILD_EXAMPLES "Build example applications" ON)
 option(BUILD_PYTHON_BINDINGS "Build Python bindings" ON)
 option(ENABLE_CUDA "Enable CUDA support for GPU physics" OFF)
 option(ENABLE_ROS2 "Enable ROS2 integration" OFF)
+option(USE_SANITIZERS "Enable Address and Undefined Behavior Sanitizers" OFF)
 
 # ============================================================================
 # Dependencies
@@ -100,6 +112,7 @@ set(AEROSIMX_CORE_SOURCES
     src/core/time_manager.cpp
     src/core/entity_manager.cpp
     src/core/event_system.cpp
+    src/scenario/scenario_manager.cpp
 )
 
 set(AEROSIMX_PHYSICS_SOURCES
