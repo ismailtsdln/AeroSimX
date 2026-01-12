@@ -1,0 +1,60 @@
+# AeroSimX Bridge Configuration
+
+# Connection settings
+host: "localhost"
+port: 41451
+
+# Vehicle settings
+vehicle_name: "drone1"
+vehicle_type: "multirotor"
+
+# Update rates (Hz)
+update_rate: 100.0
+lidar_rate: 10.0
+camera_rate: 30.0
+imu_rate: 200.0
+gps_rate: 1.0
+
+# TF settings
+publish_tf: true
+world_frame: "world"
+odom_frame: "odom"
+base_frame: "base_link"
+
+# Sensor frame IDs
+lidar_frame: "lidar_link"
+camera_frame: "camera_link"
+imu_frame: "imu_link"
+
+# Topic remappings
+topics:
+  lidar: "/aerosimx/lidar"
+  camera_rgb: "/aerosimx/camera/image_raw"
+  camera_depth: "/aerosimx/camera/depth"
+  imu: "/aerosimx/imu"
+  gps: "/aerosimx/gps"
+  odom: "/aerosimx/odom"
+  pose: "/aerosimx/pose"
+  cmd_vel: "/aerosimx/cmd_vel"
+  target_pose: "/aerosimx/target_pose"
+
+# Sensor configuration
+sensors:
+  lidar:
+    enabled: true
+    channels: 16
+    range_max: 100.0
+    
+  camera:
+    enabled: true
+    width: 640
+    height: 480
+    fov: 90.0
+    
+  imu:
+    enabled: true
+    
+  gps:
+    enabled: true
+    origin_latitude: 0.0
+    origin_longitude: 0.0
