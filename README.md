@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/logo.png" alt="AeroSimX Logo" width="400">
+  <img src="assets/images/logo.png" alt="AeroSimX Logo" width="300">
 </p>
 
 <h1 align="center">AeroSimX</h1>
@@ -14,6 +14,10 @@
   <a href="#quick-start">Quick Start</a> •
   <a href="#documentation">Documentation</a> •
   <a href="#examples">Examples</a>
+</p>
+
+<p align="center">
+  <img src="assets/images/hero_image.png" alt="AeroSimX Hero" width="100%">
 </p>
 
 <p align="center">
